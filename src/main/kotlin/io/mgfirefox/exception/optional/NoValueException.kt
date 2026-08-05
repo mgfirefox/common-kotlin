@@ -1,14 +1,15 @@
 package io.mgfirefox.exception.optional
 
-import io.mgfirefox.exception.runtime.RuntimeException
+private const val NO_VALUE_MESSAGE: String = "No value has been retrieved"
 
-class NoValueException : RuntimeException {
+class NoValueException private constructor(message: String) : RuntimeException(message) {
 
-    constructor() : super("No value has been retrieved")
+    constructor() : this(NO_VALUE_MESSAGE)
 
-    constructor(noSuchElementException: NoSuchElementException) : super(noSuchElementException)
+    constructor(noValueException: KNoValueException) : this(
+        noValueException.message ?: NO_VALUE_MESSAGE)
 
-    fun unwrapNoValueException(): NoSuchElementException {
-        return NoSuchElementException(message)
+    fun unwrapNoValueException(): KNoValueException {
+        return KNoValueException(message)
     }
 }
