@@ -1,6 +1,6 @@
 package io.mgfirefox.`object`.comparable
 
-interface Comparable<in OtherT> {
+interface Comparable<in OtherT> : KComparable<OtherT> {
 
-    operator fun compareTo(other: OtherT): Int
+    override fun compareTo(other: OtherT): Int
 }
