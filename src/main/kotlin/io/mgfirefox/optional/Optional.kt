@@ -17,6 +17,10 @@ class Optional<out ValueT> private constructor(val hasValue: Boolean, private va
 
     private constructor(value: ValueT) : this(true, value)
 
+    fun unwrapOptional(): ValueT? {
+        return _value
+    }
+
     companion object {
 
         @JvmStatic
