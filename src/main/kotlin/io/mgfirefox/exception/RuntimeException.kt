@@ -1,7 +1,5 @@
-package io.mgfirefox.exception.runtime
+package io.mgfirefox.exception
 
-import io.mgfirefox.exception.Exception
-import io.mgfirefox.exception.KRuntimeException
 import io.mgfirefox.`object`.throwable.Throwable
 
 open class RuntimeException : Exception {
