@@ -1,15 +1,18 @@
 package io.mgfirefox.stream.element.iterable
 
 import io.mgfirefox.collection.iterable.ReadOnlyIterable
+import io.mgfirefox.data.pair.Pair
 import io.mgfirefox.stream.KCStream
-import io.mgfirefox.stream.Stream
+import io.mgfirefox.stream.element.AbstractElementStream
 import io.mgfirefox.stream.element.DefaultElementStream
 import io.mgfirefox.stream.element.ElementStream
+import io.mgfirefox.stream.element.pair.DefaultPairStream
+import io.mgfirefox.stream.element.pair.PairStream
 import io.mgfirefox.stream.filter.ExcludePredicate
 import io.mgfirefox.stream.filter.FilterPredicate
 
 class DefaultIterableStream<ElementT>(private val stream: KCStream<ReadOnlyIterable<ElementT>>) :
-    DefaultElementStream<ReadOnlyIterable<ElementT>>(stream), IterableStream<ElementT> {
+    AbstractElementStream<ReadOnlyIterable<ElementT>>(stream), IterableStream<ElementT> {
 
     override fun flatten(): ElementStream<ElementT> {
         return DefaultElementStream(stream.flatten())
@@ -18,30 +21,42 @@ class DefaultIterableStream<ElementT>(private val stream: KCStream<ReadOnlyItera
     override fun filter(
         predicate: FilterPredicate<ReadOnlyIterable<ElementT>>
     ): IterableStream<ElementT> {
-        return from(super.filter(predicate))
+        return createDerived(super.filter(predicate))
     }
 
     override fun exclude(
         predicate: ExcludePredicate<ReadOnlyIterable<ElementT>>
     ): IterableStream<ElementT> {
-        return from(super.exclude(predicate))
+        return createDerived(super.exclude(predicate))
     }
 
     override fun reverse(): IterableStream<ElementT> {
-        return from(super.reverse())
+        return createDerived(super.reverse())
     }
 
     override fun shuffle(): IterableStream<ElementT> {
-        return from(super.shuffle())
+        return createDerived(super.shuffle())
     }
 
-    companion object {
+    override fun createDerived(
+        stream: ElementStream<ReadOnlyIterable<ElementT>>
+    ): IterableStream<ElementT> {
+        return createIterable(stream.unwrapStream())
+    }
 
-        @JvmStatic
-        fun <ElementT> from(
-            stream: Stream<ReadOnlyIterable<ElementT>>
-        ): DefaultIterableStream<ElementT> {
-            return DefaultIterableStream(stream.unwrapStream())
-        }
+    override fun <ElementT> create(stream: KCStream<ElementT>): ElementStream<ElementT> {
+        return DefaultElementStream(stream)
+    }
+
+    override fun <KeyT, ValueT> createPair(
+        stream: KCStream<Pair<KeyT, ValueT>>
+    ): PairStream<KeyT, ValueT> {
+        return DefaultPairStream(stream)
+    }
+
+    override fun <ElementT> createIterable(
+        stream: KCStream<ReadOnlyIterable<ElementT>>
+    ): IterableStream<ElementT> {
+        return DefaultIterableStream(stream)
     }
 }

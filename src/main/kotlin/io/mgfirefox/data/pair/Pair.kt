@@ -3,8 +3,8 @@ package io.mgfirefox.data.pair
 import io.mgfirefox.`object`.convertable.StringConvertible
 import io.mgfirefox.`object`.equatable.Equatable
 
-data class Pair<out FirstT, out SecondT>(val first: FirstT, val second: SecondT) :
-    Equatable, StringConvertible {
+data class Pair<out FirstT, out SecondT>(val first: FirstT, val second: SecondT) : Equatable,
+    StringConvertible {
 
     constructor(pair: KPair<FirstT, SecondT>) : this(pair.first, pair.second)
 
