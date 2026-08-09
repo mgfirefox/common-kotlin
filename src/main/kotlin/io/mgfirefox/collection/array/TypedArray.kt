@@ -1,6 +1,5 @@
 package io.mgfirefox.collection.array
 
-import io.mgfirefox.collection.KCCollection
 import io.mgfirefox.collection.KCReadOnlyCollection
 import io.mgfirefox.collection.iterable.ReadOnlyIterable
 import io.mgfirefox.collection.iterator.ElementReadOnlyIterator
@@ -87,7 +86,7 @@ class TypedArray<ElementT>(array: KReadOnlyArray<ElementT>) : Array<ElementT> {
 
     override fun unwrapReadOnlyCollection(): KCReadOnlyCollection<ElementT> {
         val stream: KCStream<ElementT> = array.toList()
-        
+
         val collection = DefaultElementStream(stream).toArrayList().unwrapReadOnlyCollection()
 
         return collection

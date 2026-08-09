@@ -1,6 +1,5 @@
 package io.mgfirefox.stream.element.iterable
 
-import io.mgfirefox.collection.array.KReadOnlyArray
 import io.mgfirefox.collection.iterable.ReadOnlyIterable
 import io.mgfirefox.stream.KCStream
 import io.mgfirefox.stream.Stream

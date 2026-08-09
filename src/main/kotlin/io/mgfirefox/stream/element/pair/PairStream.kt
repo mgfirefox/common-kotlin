@@ -22,7 +22,7 @@ interface PairStream<FirstT, SecondT> : ElementStream<Pair<FirstT, SecondT>>,
     ): PairStream<FirstT, SecondT>
 
     override fun reverse(): PairStream<FirstT, SecondT>
-    
+
     override fun shuffle(): PairStream<FirstT, SecondT>
 
     fun toLinkedHashMap(): LinkedHashMap<FirstT, SecondT>
