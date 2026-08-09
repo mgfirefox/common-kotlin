@@ -7,28 +7,27 @@ import io.mgfirefox.collection.list.KCReadOnlyList
 import io.mgfirefox.collection.set.KCReadOnlySet
 import io.mgfirefox.collection.set.LinkedHashSet
 import io.mgfirefox.data.pair.Pair
+import io.mgfirefox.function.mapper.Mapper
+import io.mgfirefox.function.predicate.Predicate
 import io.mgfirefox.stream.KCStream
 import io.mgfirefox.stream.element.iterable.IterableStream
 import io.mgfirefox.stream.element.pair.PairStream
-import io.mgfirefox.stream.filter.ExcludePredicate
-import io.mgfirefox.stream.filter.FilterPredicate
-import io.mgfirefox.stream.transform.TransformMapper
 
 abstract class AbstractElementStream<ElementT>(private val stream: KCStream<ElementT>) :
     ElementStream<ElementT> {
 
-    override fun <ResultT> map(mapper: TransformMapper<ElementT, ResultT>): ElementStream<ResultT> {
+    override fun <ResultT> map(mapper: Mapper<ElementT, ResultT>): ElementStream<ResultT> {
         return create(stream.map(mapper))
     }
 
     override fun <FirstT, SecondT> mapToPair(
-        mapper: TransformMapper<ElementT, Pair<FirstT, SecondT>>
+        mapper: Mapper<ElementT, Pair<FirstT, SecondT>>
     ): PairStream<FirstT, SecondT> {
         return createPair(map(mapper).unwrapStream())
     }
 
     override fun <FirstT, SecondT> mapToPair(
-        firstMapper: TransformMapper<ElementT, FirstT>, secondMapper: TransformMapper<ElementT, SecondT>
+        firstMapper: Mapper<ElementT, FirstT>, secondMapper: Mapper<ElementT, SecondT>
     ): PairStream<FirstT, SecondT> {
         val pairStream = mapToPair { element -> Pair(firstMapper(element), secondMapper(element)) }
 
@@ -36,7 +35,7 @@ abstract class AbstractElementStream<ElementT>(private val stream: KCStream<Elem
     }
 
     override fun mapToIterable(
-        mapper: TransformMapper<ElementT, ReadOnlyIterable<ElementT>>
+        mapper: Mapper<ElementT, ReadOnlyIterable<ElementT>>
     ): IterableStream<ElementT> {
         return createIterable(map(mapper).unwrapStream())
     }
@@ -47,11 +46,11 @@ abstract class AbstractElementStream<ElementT>(private val stream: KCStream<Elem
         return pairStream
     }
 
-    override fun filter(predicate: FilterPredicate<ElementT>): ElementStream<ElementT> {
+    override fun filter(predicate: Predicate<ElementT>): ElementStream<ElementT> {
         return create(stream.filter(predicate))
     }
 
-    override fun exclude(predicate: ExcludePredicate<ElementT>): ElementStream<ElementT> {
+    override fun exclude(predicate: Predicate<ElementT>): ElementStream<ElementT> {
         val streamWithExcludedElements = stream.filterNot(predicate)
 
         return create(streamWithExcludedElements)

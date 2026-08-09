@@ -2,14 +2,13 @@ package io.mgfirefox.stream.element.iterable
 
 import io.mgfirefox.collection.iterable.ReadOnlyIterable
 import io.mgfirefox.data.pair.Pair
+import io.mgfirefox.function.predicate.Predicate
 import io.mgfirefox.stream.KCStream
 import io.mgfirefox.stream.element.AbstractElementStream
 import io.mgfirefox.stream.element.DefaultElementStream
 import io.mgfirefox.stream.element.ElementStream
 import io.mgfirefox.stream.element.pair.DefaultPairStream
 import io.mgfirefox.stream.element.pair.PairStream
-import io.mgfirefox.stream.filter.ExcludePredicate
-import io.mgfirefox.stream.filter.FilterPredicate
 
 class DefaultIterableStream<ElementT>(private val stream: KCStream<ReadOnlyIterable<ElementT>>) :
     AbstractElementStream<ReadOnlyIterable<ElementT>>(stream), IterableStream<ElementT> {
@@ -19,13 +18,13 @@ class DefaultIterableStream<ElementT>(private val stream: KCStream<ReadOnlyItera
     }
 
     override fun filter(
-        predicate: FilterPredicate<ReadOnlyIterable<ElementT>>
+        predicate: Predicate<ReadOnlyIterable<ElementT>>
     ): IterableStream<ElementT> {
         return createDerived(super.filter(predicate))
     }
 
     override fun exclude(
-        predicate: ExcludePredicate<ReadOnlyIterable<ElementT>>
+        predicate: Predicate<ReadOnlyIterable<ElementT>>
     ): IterableStream<ElementT> {
         return createDerived(super.exclude(predicate))
     }
