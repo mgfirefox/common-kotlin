@@ -8,13 +8,13 @@ interface TransformStream<ElementT> : Stream<ElementT> {
 
     fun <ResultT> map(mapper: TransformMapper<ElementT, ResultT>): TransformStream<ResultT>
 
-    fun <KeyT, ValueT> mapToPair(
-        mapper: TransformMapper<ElementT, Pair<KeyT, ValueT>>
-    ): TransformStream<Pair<KeyT, ValueT>>
+    fun <FirstT, SecondT> mapToPair(
+        mapper: TransformMapper<ElementT, Pair<FirstT, SecondT>>
+    ): TransformStream<Pair<FirstT, SecondT>>
 
-    fun <KeyT, ValueT> mapToPair(
-        keyMapper: TransformMapper<ElementT, KeyT>, valueMapper: TransformMapper<ElementT, ValueT>
-    ): TransformStream<Pair<KeyT, ValueT>>
+    fun <FirstT, SecondT> mapToPair(
+        firstMapper: TransformMapper<ElementT, FirstT>, secondMapper: TransformMapper<ElementT, SecondT>
+    ): TransformStream<Pair<FirstT, SecondT>>
 
     fun mapToIterable(
         mapper: TransformMapper<ElementT, ReadOnlyIterable<ElementT>>

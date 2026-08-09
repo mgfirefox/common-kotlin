@@ -17,13 +17,13 @@ interface ElementStream<ElementT> : Stream<ElementT>, TransformStream<ElementT>,
     FilterStream<ElementT>, OrderStream<ElementT>, ConvertStream<ElementT> {
 
     override fun <ResultT> map(mapper: TransformMapper<ElementT, ResultT>): ElementStream<ResultT>
-    override fun <KeyT, ValueT> mapToPair(
-        mapper: TransformMapper<ElementT, Pair<KeyT, ValueT>>
-    ): PairStream<KeyT, ValueT>
+    override fun <FirstT, SecondT> mapToPair(
+        mapper: TransformMapper<ElementT, Pair<FirstT, SecondT>>
+    ): PairStream<FirstT, SecondT>
 
-    override fun <KeyT, ValueT> mapToPair(
-        keyMapper: TransformMapper<ElementT, KeyT>, valueMapper: TransformMapper<ElementT, ValueT>
-    ): PairStream<KeyT, ValueT>
+    override fun <FirstT, SecondT> mapToPair(
+        firstMapper: TransformMapper<ElementT, FirstT>, secondMapper: TransformMapper<ElementT, SecondT>
+    ): PairStream<FirstT, SecondT>
 
     override fun mapToIterable(
         mapper: TransformMapper<ElementT, ReadOnlyIterable<ElementT>>

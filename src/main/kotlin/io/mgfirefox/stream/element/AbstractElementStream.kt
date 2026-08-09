@@ -21,16 +21,16 @@ abstract class AbstractElementStream<ElementT>(private val stream: KCStream<Elem
         return create(stream.map(mapper))
     }
 
-    override fun <KeyT, ValueT> mapToPair(
-        mapper: TransformMapper<ElementT, Pair<KeyT, ValueT>>
-    ): PairStream<KeyT, ValueT> {
+    override fun <FirstT, SecondT> mapToPair(
+        mapper: TransformMapper<ElementT, Pair<FirstT, SecondT>>
+    ): PairStream<FirstT, SecondT> {
         return createPair(map(mapper).unwrapStream())
     }
 
-    override fun <KeyT, ValueT> mapToPair(
-        keyMapper: TransformMapper<ElementT, KeyT>, valueMapper: TransformMapper<ElementT, ValueT>
-    ): PairStream<KeyT, ValueT> {
-        val pairStream = mapToPair { element -> Pair(keyMapper(element), valueMapper(element)) }
+    override fun <FirstT, SecondT> mapToPair(
+        firstMapper: TransformMapper<ElementT, FirstT>, secondMapper: TransformMapper<ElementT, SecondT>
+    ): PairStream<FirstT, SecondT> {
+        val pairStream = mapToPair { element -> Pair(firstMapper(element), secondMapper(element)) }
 
         return pairStream
     }
@@ -92,9 +92,9 @@ abstract class AbstractElementStream<ElementT>(private val stream: KCStream<Elem
 
     protected abstract fun <ElementT> create(stream: KCStream<ElementT>): ElementStream<ElementT>
 
-    protected abstract fun <KeyT, ValueT> createPair(
-        stream: KCStream<Pair<KeyT, ValueT>>
-    ): PairStream<KeyT, ValueT>
+    protected abstract fun <FirstT, SecondT> createPair(
+        stream: KCStream<Pair<FirstT, SecondT>>
+    ): PairStream<FirstT, SecondT>
 
     protected abstract fun <ElementT> createIterable(
         stream: KCStream<ReadOnlyIterable<ElementT>>

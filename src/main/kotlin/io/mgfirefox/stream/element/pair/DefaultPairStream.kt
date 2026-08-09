@@ -55,9 +55,9 @@ class DefaultPairStream<FirstT, SecondT>(stream: KCStream<Pair<FirstT, SecondT>>
         return DefaultElementStream(stream)
     }
 
-    override fun <KeyT, ValueT> createPair(
-        stream: KCStream<Pair<KeyT, ValueT>>
-    ): PairStream<KeyT, ValueT> {
+    override fun <FirstT, SecondT> createPair(
+        stream: KCStream<Pair<FirstT, SecondT>>
+    ): PairStream<FirstT, SecondT> {
         return DefaultPairStream(stream)
     }
 
