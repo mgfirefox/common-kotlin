@@ -3,7 +3,7 @@ package io.mgfirefox.data.pair
 import io.mgfirefox.`object`.convertable.StringConvertible
 import io.mgfirefox.`object`.equatable.Equatable
 
-data class Pair<out FirstT, out SecondT>(val firstValue: FirstT, val secondValue: SecondT) :
+data class Pair<out FirstT, out SecondT>(val first: FirstT, val second: SecondT) :
     Equatable, StringConvertible {
 
     constructor(pair: KPair<FirstT, SecondT>) : this(pair.first, pair.second)
@@ -16,10 +16,10 @@ data class Pair<out FirstT, out SecondT>(val firstValue: FirstT, val secondValue
             return false
         }
 
-        if (firstValue != other.firstValue) {
+        if (first != other.first) {
             return false
         }
-        if (secondValue != other.secondValue) {
+        if (second != other.second) {
             return false
         }
 
@@ -27,18 +27,18 @@ data class Pair<out FirstT, out SecondT>(val firstValue: FirstT, val secondValue
     }
 
     override fun hashCode(): Int {
-        var result = firstValue?.hashCode() ?: 0
-        result = 31 * result + (secondValue?.hashCode() ?: 0)
+        var result = first?.hashCode() ?: 0
+        result = 31 * result + (second?.hashCode() ?: 0)
 
         return result
     }
 
     fun unwrapPair(): KPair<FirstT, SecondT> {
-        return KPair(firstValue, secondValue)
+        return KPair(first, second)
     }
 
     override fun toString(): String {
-        return "($firstValue, $secondValue)"
+        return "($first, $second)"
     }
 
     companion object

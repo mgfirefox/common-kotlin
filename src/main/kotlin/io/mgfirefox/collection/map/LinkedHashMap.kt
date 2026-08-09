@@ -61,11 +61,11 @@ class LinkedHashMap<KeyT, ValueT>(map: KCReadOnlyMap<KeyT, ValueT>) : Map<KeyT, 
     }
 
     override fun contains(element: Pair<KeyT, ValueT>): Boolean {
-        if (!containsKey(element.firstValue)) {
+        if (!containsKey(element.first)) {
             return false
         }
 
-        if (element.secondValue != this[element.firstValue]) {
+        if (element.second != this[element.first]) {
             return false
         }
 
@@ -85,11 +85,11 @@ class LinkedHashMap<KeyT, ValueT>(map: KCReadOnlyMap<KeyT, ValueT>) : Map<KeyT, 
     }
 
     override fun add(element: Pair<KeyT, ValueT>) {
-        this[element.firstValue] = element.secondValue
+        this[element.first] = element.second
     }
 
     override fun remove(element: Pair<KeyT, ValueT>): Boolean {
-        val isElementRemoved = discardBy(element.firstValue)
+        val isElementRemoved = discardBy(element.first)
 
         return isElementRemoved
     }
@@ -221,7 +221,7 @@ private class LinkedHashMapCollection<KeyT, ValueT>(
 
     override fun add(element: Pair<KeyT, ValueT>): Boolean {
         for (pair in set) {
-            if (pair.firstValue != element.firstValue) {
+            if (pair.first != element.first) {
                 continue
             }
 
