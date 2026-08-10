@@ -4,7 +4,7 @@ import io.mgfirefox.collection.iterable.ReadOnlyIterable
 import io.mgfirefox.function.predicate.Predicate
 import io.mgfirefox.stream.filter.FilterStream
 
-interface IterableFilterStream<ElementT> : FilterStream<ReadOnlyIterable<ElementT>> {
+interface IterableFilterStream<out ElementT> : FilterStream<ReadOnlyIterable<ElementT>> {
 
     override fun filter(
         predicate: Predicate<ReadOnlyIterable<ElementT>>
