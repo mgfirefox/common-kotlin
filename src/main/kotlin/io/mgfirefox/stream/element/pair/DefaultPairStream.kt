@@ -14,8 +14,7 @@ import io.mgfirefox.stream.element.iterable.DefaultIterableStream
 import io.mgfirefox.stream.element.iterable.IterableStream
 
 class DefaultPairStream<FirstT, SecondT>(stream: KCStream<Pair<FirstT, SecondT>>) :
-    AbstractElementStream<Pair<FirstT, SecondT>>(stream), PairStream<FirstT, SecondT>,
-    PairConvertStream<FirstT, SecondT> {
+    AbstractElementStream<Pair<FirstT, SecondT>>(stream), PairStream<FirstT, SecondT> {
 
     override fun filter(predicate: Predicate<Pair<FirstT, SecondT>>): PairStream<FirstT, SecondT> {
         return createDerived(super.filter(predicate))
