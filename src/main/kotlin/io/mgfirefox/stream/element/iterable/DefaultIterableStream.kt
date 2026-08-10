@@ -29,6 +29,30 @@ class DefaultIterableStream<ElementT>(private val stream: KCStream<ReadOnlyItera
         return createDerived(super.exclude(predicate))
     }
 
+    override fun take(count: Int): IterableStream<ElementT> {
+        return createDerived(super.take(count))
+    }
+    
+    override fun takeWhile(predicate: Predicate<ReadOnlyIterable<ElementT>>): IterableStream<ElementT> {
+        return createDerived(super.takeWhile(predicate))
+    }
+    
+    override fun takeUntil(predicate: Predicate<ReadOnlyIterable<ElementT>>): IterableStream<ElementT> {
+        return createDerived(super.takeUntil(predicate))
+    }
+
+    override fun drop(count: Int): IterableStream<ElementT> {
+        return createDerived(super.drop(count))
+    }
+    
+    override fun dropWhile(predicate: Predicate<ReadOnlyIterable<ElementT>>): IterableStream<ElementT> {
+        return createDerived(super.dropWhile(predicate))
+    }
+    
+    override fun dropUntil(predicate: Predicate<ReadOnlyIterable<ElementT>>): IterableStream<ElementT> {
+        return createDerived(super.dropUntil(predicate))
+    }
+
     override fun reverse(): IterableStream<ElementT> {
         return createDerived(super.reverse())
     }

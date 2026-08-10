@@ -56,6 +56,34 @@ abstract class AbstractElementStream<ElementT>(private val stream: KCStream<Elem
         return create(streamWithExcludedElements)
     }
 
+    override fun take(count: Int): ElementStream<ElementT> {
+        return create(stream.take(count))
+    }
+
+    override fun takeWhile(predicate: Predicate<ElementT>): ElementStream<ElementT> {
+        return create(stream.takeWhile(predicate))
+    }
+
+    override fun takeUntil(predicate: Predicate<ElementT>): ElementStream<ElementT> {
+        val stream = takeWhile { element -> !predicate(element) }
+        
+        return stream
+    }
+
+    override fun drop(count: Int): ElementStream<ElementT> {
+        return create(stream.drop(count))
+    }
+
+    override fun dropWhile(predicate: Predicate<ElementT>): ElementStream<ElementT> {
+        return create(stream.dropWhile(predicate))
+    }
+
+    override fun dropUntil(predicate: Predicate<ElementT>): ElementStream<ElementT> {
+        val stream = dropWhile { element -> !predicate(element) }
+        
+        return stream
+    }
+
     override fun reverse(): ElementStream<ElementT> {
         return create(stream.reversed())
     }

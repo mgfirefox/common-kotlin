@@ -24,6 +24,30 @@ class DefaultPairStream<FirstT, SecondT>(stream: KCStream<Pair<FirstT, SecondT>>
         return createDerived(super.exclude(predicate))
     }
 
+    override fun take(count: Int): PairStream<FirstT, SecondT> {
+        return createDerived(super.take(count))
+    }
+    
+    override fun takeWhile(predicate: Predicate<Pair<FirstT, SecondT>>): PairStream<FirstT, SecondT> {
+        return createDerived(super.takeWhile(predicate))
+    }
+    
+    override fun takeUntil(predicate: Predicate<Pair<FirstT, SecondT>>): PairStream<FirstT, SecondT> {
+        return createDerived(super.takeUntil(predicate))
+    }
+
+    override fun drop(count: Int): PairStream<FirstT, SecondT> {
+        return createDerived(super.drop(count))
+    }
+    
+    override fun dropWhile(predicate: Predicate<Pair<FirstT, SecondT>>): PairStream<FirstT, SecondT> {
+        return createDerived(super.dropWhile(predicate))
+    }
+    
+    override fun dropUntil(predicate: Predicate<Pair<FirstT, SecondT>>): PairStream<FirstT, SecondT> {
+        return createDerived(super.dropUntil(predicate))
+    }
+
     override fun reverse(): PairStream<FirstT, SecondT> {
         return createDerived(super.reverse())
     }

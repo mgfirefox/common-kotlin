@@ -13,4 +13,12 @@ interface PairFilterStream<FirstT, SecondT> : FilterStream<Pair<FirstT, SecondT>
     override fun exclude(
         predicate: Predicate<Pair<FirstT, SecondT>>
     ): PairFilterStream<FirstT, SecondT>
+    
+    override fun take(count: Int): PairFilterStream<FirstT, SecondT>
+    override fun takeWhile(predicate: Predicate<Pair<FirstT, SecondT>>): PairFilterStream<FirstT, SecondT>
+    override fun takeUntil(predicate: Predicate<Pair<FirstT, SecondT>>): PairFilterStream<FirstT, SecondT>
+
+    override fun drop(count: Int): PairFilterStream<FirstT, SecondT>
+    override fun dropWhile(predicate: Predicate<Pair<FirstT, SecondT>>): PairFilterStream<FirstT, SecondT>
+    override fun dropUntil(predicate: Predicate<Pair<FirstT, SecondT>>): PairFilterStream<FirstT, SecondT>
 }

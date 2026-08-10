@@ -21,6 +21,14 @@ interface IterableStream<ElementT> : ElementStream<ReadOnlyIterable<ElementT>>,
         predicate: Predicate<ReadOnlyIterable<ElementT>>
     ): IterableStream<ElementT>
 
+    override fun take(count: Int): IterableStream<ElementT>
+    override fun takeWhile(predicate: Predicate<ReadOnlyIterable<ElementT>>): IterableStream<ElementT>
+    override fun takeUntil(predicate: Predicate<ReadOnlyIterable<ElementT>>): IterableStream<ElementT>
+
+    override fun drop(count: Int): IterableStream<ElementT>
+    override fun dropWhile(predicate: Predicate<ReadOnlyIterable<ElementT>>): IterableStream<ElementT>
+    override fun dropUntil(predicate: Predicate<ReadOnlyIterable<ElementT>>): IterableStream<ElementT>
+
     override fun reverse(): IterableStream<ElementT>
 
     override fun shuffle(): IterableStream<ElementT>
