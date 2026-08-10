@@ -34,9 +34,9 @@ abstract class AbstractElementStream<ElementT>(private val stream: KCStream<Elem
         return pairStream
     }
 
-    override fun mapToIterable(
-        mapper: Mapper<ElementT, ReadOnlyIterable<ElementT>>
-    ): IterableStream<ElementT> {
+    override fun <ResultT> mapToIterable(
+        mapper: Mapper<ElementT, ReadOnlyIterable<ResultT>>
+    ): IterableStream<ResultT> {
         return createIterable(map(mapper).unwrapStream())
     }
 

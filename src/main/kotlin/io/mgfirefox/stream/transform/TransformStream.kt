@@ -17,9 +17,9 @@ interface TransformStream<ElementT> : Stream<ElementT> {
         firstMapper: Mapper<ElementT, FirstT>, secondMapper: Mapper<ElementT, SecondT>
     ): TransformStream<Pair<FirstT, SecondT>>
 
-    fun mapToIterable(
-        mapper: Mapper<ElementT, ReadOnlyIterable<ElementT>>
-    ): TransformStream<ReadOnlyIterable<ElementT>>
+    fun <ResultT> mapToIterable(
+        mapper: Mapper<ElementT, ReadOnlyIterable<ResultT>>
+    ): TransformStream<ReadOnlyIterable<ResultT>>
 
     fun <OtherT> zip(other: ReadOnlyIterable<OtherT>): TransformStream<Pair<ElementT, OtherT>>
 }

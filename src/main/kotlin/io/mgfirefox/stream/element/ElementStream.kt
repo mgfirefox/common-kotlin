@@ -24,9 +24,9 @@ interface ElementStream<ElementT> : Stream<ElementT>, TransformStream<ElementT>,
         firstMapper: Mapper<ElementT, FirstT>, secondMapper: Mapper<ElementT, SecondT>
     ): PairStream<FirstT, SecondT>
 
-    override fun mapToIterable(
-        mapper: Mapper<ElementT, ReadOnlyIterable<ElementT>>
-    ): IterableStream<ElementT>
+    override fun <ResultT> mapToIterable(
+        mapper: Mapper<ElementT, ReadOnlyIterable<ResultT>>
+    ): IterableStream<ResultT>
 
     override fun <OtherT> zip(other: ReadOnlyIterable<OtherT>): PairStream<ElementT, OtherT>
 
