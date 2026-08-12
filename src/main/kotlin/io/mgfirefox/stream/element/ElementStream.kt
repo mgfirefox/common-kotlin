@@ -32,6 +32,7 @@ interface ElementStream<ElementT> : Stream<ElementT>, TransformStream<ElementT>,
 
     override fun filter(predicate: Predicate<ElementT>): ElementStream<ElementT>
     override fun exclude(predicate: Predicate<ElementT>): ElementStream<ElementT>
+    override fun distinct(): ElementStream<ElementT>
     
     override fun take(count: Int): ElementStream<ElementT>
     override fun takeWhile(predicate: Predicate<ElementT>): ElementStream<ElementT>

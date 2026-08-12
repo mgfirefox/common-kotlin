@@ -7,6 +7,7 @@ interface FilterStream<out ElementT> : Stream<ElementT> {
 
     fun filter(predicate: Predicate<ElementT>): FilterStream<ElementT>
     fun exclude(predicate: Predicate<ElementT>): FilterStream<ElementT>
+    fun distinct(): FilterStream<ElementT>
     
     fun take(count: Int): FilterStream<ElementT>
     fun takeWhile(predicate: Predicate<ElementT>): FilterStream<ElementT>

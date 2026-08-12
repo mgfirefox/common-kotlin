@@ -56,6 +56,10 @@ abstract class AbstractElementStream<ElementT>(private val stream: KCStream<Elem
         return create(streamWithExcludedElements)
     }
 
+    override fun distinct(): ElementStream<ElementT> {
+        return create(stream.distinct())
+    }
+
     override fun take(count: Int): ElementStream<ElementT> {
         return create(stream.take(count))
     }

@@ -29,6 +29,10 @@ class DefaultIterableStream<ElementT>(private val stream: KCStream<ReadOnlyItera
         return createDerived(super.exclude(predicate))
     }
 
+    override fun distinct(): IterableStream<ElementT> {
+        return createDerived(super.distinct())
+    }
+
     override fun take(count: Int): IterableStream<ElementT> {
         return createDerived(super.take(count))
     }

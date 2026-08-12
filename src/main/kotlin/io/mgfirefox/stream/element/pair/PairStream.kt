@@ -15,6 +15,7 @@ interface PairStream<FirstT, SecondT> : ElementStream<Pair<FirstT, SecondT>>,
 
     override fun filter(predicate: Predicate<Pair<FirstT, SecondT>>): PairStream<FirstT, SecondT>
     override fun exclude(predicate: Predicate<Pair<FirstT, SecondT>>): PairStream<FirstT, SecondT>
+    override fun distinct(): PairStream<FirstT, SecondT>
 
     override fun take(count: Int): PairStream<FirstT, SecondT>
     override fun takeWhile(predicate: Predicate<Pair<FirstT, SecondT>>): PairStream<FirstT, SecondT>

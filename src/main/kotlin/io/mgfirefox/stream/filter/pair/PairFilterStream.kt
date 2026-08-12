@@ -13,6 +13,7 @@ interface PairFilterStream<out FirstT, out SecondT> : FilterStream<Pair<FirstT, 
     override fun exclude(
         predicate: Predicate<Pair<FirstT, SecondT>>
     ): PairFilterStream<FirstT, SecondT>
+    override fun distinct(): PairFilterStream<FirstT, SecondT>
     
     override fun take(count: Int): PairFilterStream<FirstT, SecondT>
     override fun takeWhile(predicate: Predicate<Pair<FirstT, SecondT>>): PairFilterStream<FirstT, SecondT>

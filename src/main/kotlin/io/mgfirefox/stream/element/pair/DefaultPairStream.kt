@@ -24,6 +24,10 @@ class DefaultPairStream<FirstT, SecondT>(stream: KCStream<Pair<FirstT, SecondT>>
         return createDerived(super.exclude(predicate))
     }
 
+    override fun distinct(): PairStream<FirstT, SecondT> {
+        return createDerived(super.distinct())
+    }
+
     override fun take(count: Int): PairStream<FirstT, SecondT> {
         return createDerived(super.take(count))
     }
