@@ -70,7 +70,7 @@ abstract class AbstractElementStream<ElementT>(private val stream: KCStream<Elem
 
     override fun takeUntil(predicate: Predicate<ElementT>): ElementStream<ElementT> {
         val stream = takeWhile { element -> !predicate(element) }
-        
+
         return stream
     }
 
@@ -84,7 +84,7 @@ abstract class AbstractElementStream<ElementT>(private val stream: KCStream<Elem
 
     override fun dropUntil(predicate: Predicate<ElementT>): ElementStream<ElementT> {
         val stream = dropWhile { element -> !predicate(element) }
-        
+
         return stream
     }
 

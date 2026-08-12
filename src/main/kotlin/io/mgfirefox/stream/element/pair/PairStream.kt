@@ -1,6 +1,5 @@
 package io.mgfirefox.stream.element.pair
 
-import io.mgfirefox.collection.map.LinkedHashMap
 import io.mgfirefox.data.pair.Pair
 import io.mgfirefox.function.predicate.Predicate
 import io.mgfirefox.stream.convert.pair.PairConvertStream

@@ -6,7 +6,6 @@ import io.mgfirefox.collection.map.LinkedHashMap
 import io.mgfirefox.data.pair.Pair
 import io.mgfirefox.function.predicate.Predicate
 import io.mgfirefox.stream.KCStream
-import io.mgfirefox.stream.convert.pair.PairConvertStream
 import io.mgfirefox.stream.element.AbstractElementStream
 import io.mgfirefox.stream.element.DefaultElementStream
 import io.mgfirefox.stream.element.ElementStream
@@ -31,24 +30,32 @@ class DefaultPairStream<FirstT, SecondT>(stream: KCStream<Pair<FirstT, SecondT>>
     override fun take(count: Int): PairStream<FirstT, SecondT> {
         return createDerived(super.take(count))
     }
-    
-    override fun takeWhile(predicate: Predicate<Pair<FirstT, SecondT>>): PairStream<FirstT, SecondT> {
+
+    override fun takeWhile(
+        predicate: Predicate<Pair<FirstT, SecondT>>
+    ): PairStream<FirstT, SecondT> {
         return createDerived(super.takeWhile(predicate))
     }
-    
-    override fun takeUntil(predicate: Predicate<Pair<FirstT, SecondT>>): PairStream<FirstT, SecondT> {
+
+    override fun takeUntil(
+        predicate: Predicate<Pair<FirstT, SecondT>>
+    ): PairStream<FirstT, SecondT> {
         return createDerived(super.takeUntil(predicate))
     }
 
     override fun drop(count: Int): PairStream<FirstT, SecondT> {
         return createDerived(super.drop(count))
     }
-    
-    override fun dropWhile(predicate: Predicate<Pair<FirstT, SecondT>>): PairStream<FirstT, SecondT> {
+
+    override fun dropWhile(
+        predicate: Predicate<Pair<FirstT, SecondT>>
+    ): PairStream<FirstT, SecondT> {
         return createDerived(super.dropWhile(predicate))
     }
-    
-    override fun dropUntil(predicate: Predicate<Pair<FirstT, SecondT>>): PairStream<FirstT, SecondT> {
+
+    override fun dropUntil(
+        predicate: Predicate<Pair<FirstT, SecondT>>
+    ): PairStream<FirstT, SecondT> {
         return createDerived(super.dropUntil(predicate))
     }
 
