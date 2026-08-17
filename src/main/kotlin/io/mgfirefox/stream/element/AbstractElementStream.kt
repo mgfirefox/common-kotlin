@@ -13,8 +13,9 @@ import io.mgfirefox.stream.KCStream
 import io.mgfirefox.stream.element.iterable.IterableStream
 import io.mgfirefox.stream.element.pair.PairStream
 
-abstract class AbstractElementStream<ElementT>(private val stream: KCStream<ElementT>) :
-    ElementStream<ElementT> {
+abstract class AbstractElementStream<ElementT> protected constructor(
+    private val stream: KCStream<ElementT>
+) : ElementStream<ElementT> {
 
     override fun <ResultT> map(mapper: Mapper<ElementT, ResultT>): ElementStream<ResultT> {
         return create(stream.map(mapper))
