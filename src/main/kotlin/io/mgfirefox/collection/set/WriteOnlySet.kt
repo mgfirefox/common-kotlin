@@ -6,5 +6,5 @@ interface WriteOnlySet<in ElementT> : WriteOnlyCollection<ElementT> {
 
     fun insert(element: ElementT): Boolean
 
-    fun unwrapWriteOnlySet(): KCWriteOnlySet<in ElementT>
+    fun unwrapWriteOnlySet(): KCWriteOnlySet<ElementT>
 }
