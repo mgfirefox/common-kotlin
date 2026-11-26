@@ -1,13 +1,13 @@
 package io.mgfirefox.optional
 
-import io.mgfirefox.exception.optional.NoValueException
+import io.mgfirefox.exception.optional.EmptyValueException
 
 class Optional<out ValueT> private constructor(val hasValue: Boolean, private val _value: ValueT?) {
 
     val value: ValueT
         get() {
             if (!hasValue) {
-                throw NoValueException()
+                throw EmptyValueException()
             }
 
             return _value!!

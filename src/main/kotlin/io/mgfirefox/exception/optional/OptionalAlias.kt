@@ -1,3 +1,3 @@
 package io.mgfirefox.exception.optional
 
-typealias KNoValueException = NoSuchElementException
+typealias KEmptyValueException = NoSuchElementException
