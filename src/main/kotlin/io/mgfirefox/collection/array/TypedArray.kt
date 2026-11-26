@@ -35,7 +35,7 @@ class TypedArray<ElementT>(array: KReadOnlyArray<ElementT>) : Array<ElementT> {
     }
 
     override fun hashCode(): Int {
-        return array.hashCode()
+        return array.contentHashCode()
     }
 
     override fun get(index: Int): ElementT {
@@ -109,7 +109,7 @@ class TypedArray<ElementT>(array: KReadOnlyArray<ElementT>) : Array<ElementT> {
     }
 
     override fun toString(): String {
-        return array.toString()
+        return array.contentToString()
     }
 
     companion object {
