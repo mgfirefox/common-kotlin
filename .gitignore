@@ -26,7 +26,7 @@ build/
 ### VS Code ###
 .vscode/
 
-### Mac OS ###
+### macOS ###
 .DS_Store
 
 
@@ -107,7 +107,7 @@ fabric.properties
 .idea/httpRequests
 http-client.private.env.json
 
-# Android studio 3.1+ serialized cache file
+# Android Studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 
 # Apifox Helper cache
