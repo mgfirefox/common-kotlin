@@ -4,6 +4,7 @@ import io.mgfirefox.collection.iterable.ReadOnlyIterable
 import io.mgfirefox.data.pair.Pair
 import io.mgfirefox.function.mapper.Mapper
 import io.mgfirefox.stream.Stream
+import io.mgfirefox.stream.transform.pair.PairTransformStream
 
 interface TransformStream<out ElementT> : Stream<ElementT> {
 
@@ -21,5 +22,5 @@ interface TransformStream<out ElementT> : Stream<ElementT> {
         mapper: Mapper<ElementT, ReadOnlyIterable<ResultT>>
     ): TransformStream<ReadOnlyIterable<ResultT>>
 
-    fun <OtherT> zip(other: ReadOnlyIterable<OtherT>): TransformStream<Pair<ElementT, OtherT>>
+    fun <OtherT> zip(other: ReadOnlyIterable<OtherT>): PairTransformStream<ElementT, OtherT>
 }
