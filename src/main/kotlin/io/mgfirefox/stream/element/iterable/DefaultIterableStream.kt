@@ -2,76 +2,14 @@ package io.mgfirefox.stream.element.iterable
 
 import io.mgfirefox.collection.iterable.ReadOnlyIterable
 import io.mgfirefox.data.pair.Pair
-import io.mgfirefox.function.predicate.Predicate
 import io.mgfirefox.stream.KCStream
-import io.mgfirefox.stream.element.AbstractElementStream
 import io.mgfirefox.stream.element.DefaultElementStream
 import io.mgfirefox.stream.element.ElementStream
 import io.mgfirefox.stream.element.pair.DefaultPairStream
 import io.mgfirefox.stream.element.pair.PairStream
 
-class DefaultIterableStream<ElementT>(private val stream: KCStream<ReadOnlyIterable<ElementT>>) :
-    AbstractElementStream<ReadOnlyIterable<ElementT>>(stream), IterableStream<ElementT> {
-
-    override fun flatten(): ElementStream<ElementT> {
-        return DefaultElementStream(stream.flatten())
-    }
-
-    override fun filter(
-        predicate: Predicate<ReadOnlyIterable<ElementT>>
-    ): IterableStream<ElementT> {
-        return createDerived(super.filter(predicate))
-    }
-
-    override fun exclude(
-        predicate: Predicate<ReadOnlyIterable<ElementT>>
-    ): IterableStream<ElementT> {
-        return createDerived(super.exclude(predicate))
-    }
-
-    override fun distinct(): IterableStream<ElementT> {
-        return createDerived(super.distinct())
-    }
-
-    override fun take(count: Int): IterableStream<ElementT> {
-        return createDerived(super.take(count))
-    }
-
-    override fun takeWhile(
-        predicate: Predicate<ReadOnlyIterable<ElementT>>
-    ): IterableStream<ElementT> {
-        return createDerived(super.takeWhile(predicate))
-    }
-
-    override fun takeUntil(
-        predicate: Predicate<ReadOnlyIterable<ElementT>>
-    ): IterableStream<ElementT> {
-        return createDerived(super.takeUntil(predicate))
-    }
-
-    override fun drop(count: Int): IterableStream<ElementT> {
-        return createDerived(super.drop(count))
-    }
-
-    override fun dropWhile(
-        predicate: Predicate<ReadOnlyIterable<ElementT>>
-    ): IterableStream<ElementT> {
-        return createDerived(super.dropWhile(predicate))
-    }
-
-    override fun dropUntil(
-        predicate: Predicate<ReadOnlyIterable<ElementT>>
-    ): IterableStream<ElementT> {
-        return createDerived(super.dropUntil(predicate))
-    }
-
-    override fun reverse(): IterableStream<ElementT> {
-        return createDerived(super.reverse())
-    }
-
-    override fun shuffle(): IterableStream<ElementT> {
-        return createDerived(super.shuffle())
-    }
+class DefaultIterableStream<ElementT>(stream: KCStream<ReadOnlyIterable<ElementT>>) :
+    AbstractIterableStream<ElementT>(stream) {
 
     override fun createDerived(
         stream: ElementStream<ReadOnlyIterable<ElementT>>
