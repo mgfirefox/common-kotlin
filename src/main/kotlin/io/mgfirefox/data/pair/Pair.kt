@@ -1,6 +1,6 @@
 package io.mgfirefox.data.pair
 
-import io.mgfirefox.`object`.convertable.StringConvertible
+import io.mgfirefox.`object`.convertible.StringConvertible
 import io.mgfirefox.`object`.equatable.Equatable
 
 data class Pair<out FirstT, out SecondT>(val first: FirstT, val second: SecondT) : Equatable,

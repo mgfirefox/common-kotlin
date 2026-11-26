@@ -1,4 +1,4 @@
-package io.mgfirefox.`object`.convertable
+package io.mgfirefox.`object`.convertible
 
 interface StringConvertible {
 
