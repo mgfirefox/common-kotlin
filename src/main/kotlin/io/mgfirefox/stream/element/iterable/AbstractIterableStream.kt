@@ -5,7 +5,6 @@ import io.mgfirefox.data.pair.Pair
 import io.mgfirefox.function.predicate.Predicate
 import io.mgfirefox.stream.KCStream
 import io.mgfirefox.stream.element.AbstractElementStream
-import io.mgfirefox.stream.element.DefaultElementStream
 import io.mgfirefox.stream.element.ElementStream
 import io.mgfirefox.stream.element.pair.PairStream
 
