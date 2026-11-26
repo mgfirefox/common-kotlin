@@ -15,7 +15,7 @@ interface IterableFilterStream<out ElementT> : FilterStream<ReadOnlyIterable<Ele
     ): IterableFilterStream<ElementT>
 
     override fun distinct(): IterableFilterStream<ElementT>
-    
+
     override fun take(count: Int): IterableFilterStream<ElementT>
     override fun takeWhile(
         predicate: Predicate<ReadOnlyIterable<ElementT>>
