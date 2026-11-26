@@ -27,8 +27,8 @@ data class Pair<out FirstT, out SecondT>(val first: FirstT, val second: SecondT)
     }
 
     override fun hashCode(): Int {
-        var result = first?.hashCode() ?: 0
-        result = 31 * result + (second?.hashCode() ?: 0)
+        var result = first.hashCode()
+        result = 31 * result + second.hashCode()
 
         return result
     }
