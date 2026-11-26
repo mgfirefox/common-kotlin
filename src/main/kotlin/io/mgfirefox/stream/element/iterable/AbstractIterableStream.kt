@@ -14,7 +14,7 @@ abstract class AbstractIterableStream<ElementT> protected constructor(
 ) : AbstractElementStream<ReadOnlyIterable<ElementT>>(stream), IterableStream<ElementT> {
 
     override fun flatten(): ElementStream<ElementT> {
-        return DefaultElementStream(stream.flatten())
+        return create(stream.flatten())
     }
 
     override fun filter(

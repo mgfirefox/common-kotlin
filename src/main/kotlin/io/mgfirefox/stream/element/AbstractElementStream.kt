@@ -42,7 +42,7 @@ abstract class AbstractElementStream<ElementT> protected constructor(
     }
 
     override fun <OtherT> zip(other: ReadOnlyIterable<OtherT>): PairStream<ElementT, OtherT> {
-        val pairStream = DefaultElementStream(stream.zip(other)).mapToPair { pair -> Pair(pair) }
+        val pairStream = create(stream.zip(other)).mapToPair { pair -> Pair(pair) }
 
         return pairStream
     }
