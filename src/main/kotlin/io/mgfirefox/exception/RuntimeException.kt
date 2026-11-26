@@ -2,7 +2,7 @@ package io.mgfirefox.exception
 
 import io.mgfirefox.`object`.throwable.Throwable
 
-open class RuntimeException : Exception {
+open class RuntimeException : Throwable {
 
     constructor() : this("")
 
