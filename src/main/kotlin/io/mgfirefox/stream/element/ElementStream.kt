@@ -28,7 +28,7 @@ interface ElementStream<ElementT> : Stream<ElementT>, TransformStream<ElementT>,
         mapper: Mapper<ElementT, ReadOnlyIterable<ResultT>>
     ): IterableStream<ResultT>
 
-    override fun <OtherT> zip(other: ReadOnlyIterable<OtherT>): PairStream<ElementT, OtherT>
+    override fun <OtherT> zip(other: Stream<OtherT>): PairStream<ElementT, OtherT>
 
     override fun filter(predicate: Predicate<ElementT>): ElementStream<ElementT>
     override fun exclude(predicate: Predicate<ElementT>): ElementStream<ElementT>

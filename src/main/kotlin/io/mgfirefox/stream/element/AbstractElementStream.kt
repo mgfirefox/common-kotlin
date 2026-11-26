@@ -10,6 +10,7 @@ import io.mgfirefox.data.pair.Pair
 import io.mgfirefox.function.mapper.Mapper
 import io.mgfirefox.function.predicate.Predicate
 import io.mgfirefox.stream.KCStream
+import io.mgfirefox.stream.Stream
 import io.mgfirefox.stream.element.iterable.IterableStream
 import io.mgfirefox.stream.element.pair.PairStream
 
@@ -41,8 +42,8 @@ abstract class AbstractElementStream<ElementT> protected constructor(
         return createIterable(map(mapper).unwrapStream())
     }
 
-    override fun <OtherT> zip(other: ReadOnlyIterable<OtherT>): PairStream<ElementT, OtherT> {
-        val pairStream = create(stream.zip(other)).mapToPair { pair -> Pair(pair) }
+    override fun <OtherT> zip(other: Stream<OtherT>): PairStream<ElementT, OtherT> {
+        val pairStream = create(stream.zip(other.unwrapStream())).mapToPair { pair -> Pair(pair) }
 
         return pairStream
     }
